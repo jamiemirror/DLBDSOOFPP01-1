@@ -1,0 +1,43 @@
+<div class="Habits">
+    <h2>LivingHabits:</h2>
+    <div id="daily_habits"><span>daily:</span>
+        <ul class="card">
+            {% if habits_daily %}
+                {% for h in habits_daily %}            
+                    <li>
+                        <input type="checkbox" class="h_check" id="habit_{{ h.habit_id }}" 
+                            value="{{ h.habit_id }}" 
+                            {% if h.isChecked() == True %}checked{% endif %}>
+                        <label for="habit_{{ h.habit_id }}">
+                            <a href="/habit/{{ h.habit_id }}"> {{ h.name }} </a>
+                        </label>
+                        <br>
+                    </li>
+                {% endfor %}
+            {% else %}
+                {% include 'partials/seed_btn.html'%}
+            {% endif %}
+
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div id="weekly_habits"> <span>weekly:</span>
+        <ul class="card">
+            {% if habits_weekly %}
+                {% for h in habits_weekly %}
+                    <li>
+                        <input type="checkbox" class="h_check" id="habit_{{ h.habit_id }}" 
+                            value="{{ h.habit_id }}" 
+                            {% if h.isChecked() %}checked{% endif %}>
+                        <label for="habit_{{ h.habit_id }}">
+                            <a href="/habit/{{ h.habit_id }}"> {{ h.name }} </a>
+                        </label>
+                        <br>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p>Missing weekly habits!</p>
+            {% endif %}
+        </ul>
+    </div>
+</div>

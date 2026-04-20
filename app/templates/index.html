@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='js/checkboxes.js') }}"></script>
+    <title>LivingHabits</title>
+    <link href="{{ url_for('static', filename='styles/index.css')}}", rel="stylesheet" />
+    
+</head>
+<body>
+    <a href="{{ url_for('index')}}" style="text-decoration: none;color: black;">
+        <div class="header">
+            <h1>LivingHabits Application</h1>
+        </div>
+    </a>
+    
+    <div class="divider"></div>
+    <section class="layout">
+        <div class="sidebar">
+            <br>
+            <a href="/" class="back-btn">Analytics (home)</a><br>
+            <a href="/habits" class="back-btn">List of habits</a><br>
+            <a href="/creator" class="back-btn">Create new habit</a><br>
+            <br>
+            {% include "partials/sidebar.html"%}
+        </div>
+        <div class="body">
+            <div class="analytics">
+                <div id="week">
+                    <h2>Progress:</h2>
+                    <div class="divider"></div>
+                    <div>{{ plot_weekly_prog | safe }}</div>
+                </div>
+
+                <div id="long">
+                    <h2>Longest streaks across habits</h2>
+                    <div class="divider"></div>
+                    <div>{{ plot_long | safe }}</div>
+                </div>
+            </div>
+        </div>
+      </section>
+      
+</body>
+</html>

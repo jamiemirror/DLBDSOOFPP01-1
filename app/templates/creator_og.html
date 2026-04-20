@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new habit</title>
+    <link href="{{ url_for('static', filename='styles/creator.css')}}", rel="stylesheet" />
+</head>
+<body>
+    <a href="{{ url_for('index')}}" style="text-decoration: none;color: black;">
+        <div class="header">
+            <h1>LivingHabits application</h1>
+        </div>
+    </a>
+    <div class="divider"></div>
+    <nav id="nav-bar">
+        <ul>
+            <li><a href="/">Perform analytics</a></li>
+            <li><a href="/habits">List of habits</a></li>
+            <li><a id="active" href="/creator">Create new habit</a></li>
+        </ul>
+    </nav>
+    <div class="divider"></div>
+    <div class="container">
+        <h1>Create new habit</h1>
+        <form action="/creator" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="desc">Description:</label>
+            <textarea id="desc" name="desc" rows="3"></textarea>
+
+            <label for="interval">Interval:</label>
+            <select id="interval" name="interval" required>
+                <option value="Daily">daily</option>
+                <option value="Weekly">weekly</option>
+            </select>
+
+            <button type="submit" class="btn">Create habit</button>
+        </form>
+        <a href="/" class="back-btn">Back to home page</a>
+    </div>
+</body>
+</html>

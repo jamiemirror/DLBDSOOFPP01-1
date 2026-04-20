@@ -1,0 +1,56 @@
+{% extends "partials/layout.html" %}
+{% set title = "habits"%}
+
+{% block title %} {{title.capitalize()}} {% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/' + title.lower()) + '.js' }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/' + title.lower()) + '.css' }}">
+{% endblock %}
+
+{% block content %}
+    <h1>All Habits</h1>
+    <div class="searchbar">
+        <!-- filter -->
+        <input type="text" class="grow1" id="search" placeholder="Search habits..." />
+        <select id="interval">
+            <option  value="all">Any interval</option>
+            <option value="daily">daily</option>
+            <option value="weekly">weekly</option>
+        </select>
+        <input type="number" id="streak" placeholder="Minimal streak length" />
+        <!-- sort -->
+        <select id="sort">
+            <option value="none">Sort by</option>
+            <option value="l">Longest streak</option>
+            <option value="c">Shortest streak</option>
+            <option value="name">Alphabetical (A-Z)</option>
+            <option value="interval">Period</option>
+        </select>
+        <!-- column -->
+        <div class="column">
+        <label>
+            <input type="checkbox" id="reverseSort"> </label> 
+            <p style="margin: 0;">⬆️</p>
+        </div>
+        <button onclick="fetchHabits()">Sort</button>
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Period</th>
+                    <th>Streak</th>
+                </tr>
+            </thead>
+            <tbody id="habitTableBody">
+                <!-- habit -->
+            </tbody>
+        </table>
+        <a href="/" class="back-btn">Back to home page</a>
+    </div>
+
+{% endblock %}

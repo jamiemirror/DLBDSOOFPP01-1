@@ -1,0 +1,31 @@
+{% extends "partials/layout.html" %}
+{% set title = "edit"%}
+
+{% block title %} {{title.capitalize()}} {% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/' + title.lower()) + '.css' }}">
+{% endblock %}
+
+{% block content %}
+<div class="divider"></div>
+    <div class="container">
+        <h1>Edit habit</h1>
+        <form action="{{ url_for('edit_habit', habit_id=habit.habit_id) }}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ habit.name }}" required>
+
+            <label for="desc">Description:</label>
+            <textarea id="desc" name="desc" required>{{ habit.desc }}</textarea>
+
+            <label for="interval">Interval:</label>
+            <select id="interval" name="interval" required>
+                <option value="DAILY" {% if habit.interval == 'DAILY' %}selected{% endif %}>daily</option>
+                <option value="WEEKLY" {% if habit.interval == 'WEEKLY' %}selected{% endif %}>weekly</option>
+            </select>
+
+            <button type="submit" class="btn">Save changes</button>
+            <a href="{{ url_for('index') }}" class="back-btn">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+
+{% extends "partials/layout.html" %}
+{% set title = "habit"%}
+
+{% block title %} {{title.capitalize()}} {% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/' + title.lower()) + '.js' }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/' + title.lower()) + '.css' }}">
+{% endblock %}
+
+{% block content %}
+
+    <section id="left">
+        <div id="data">
+            <div class="container">  
+                <h1>{{ habit.name }}</h1>
+                <p><strong>Description:</strong> {{ habit.desc }}</p>
+                <p><strong>Interval:</strong> {{ habit.interval }}</p>
+                <p><strong>Longest streak:</strong> {{ longest_streak }}</p>
+                <p><strong>Current streak:</strong> {{ current_streak }}</p>
+
+                <div class="check_record">
+                    <h3>Check record:</h3>
+                    {% if streaks %}
+                        <ul>
+                            {% for s in streaks %}
+                                <li>
+                                    <p>{{ s["date"] }} 
+                                        {%if s["status"] == "broken" %} 
+                                        < {{s["status"]}}
+                                        {% endif %}
+                                    </p> 
+                                </li> 
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>{{ streaks }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div id="options" method="post">
+            <button type="button" id="check-btn" value="{{habit.habit_id}}">Check off habit</button>
+            <button type="button" id="edit-btn" value="{{habit.habit_id}}">Edit habit</button>
+            <button type="button" id="delete-btn" value="{{habit.habit_id}}">Delete habit</button>
+        </div>
+        
+        <div id="back">
+            <a href="/" class="btn" id="back">Back to home page</a>
+        </div></div>
+    </section>
+    
+    <section id="right">
+        <div class="analytics">
+            <div id="week">
+                <h2>History</h2>
+                <div class="divider"></div>
+                <div>{{ plot_history | safe }}</div>
+            </div>
+
+            <div id="long">
+                <h2>Statistics</h2>
+                <div class="divider"></div>
+                <div>{{ plot_stats | safe }}</div>
+            </div>
+        </div>
+        
+    </section>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+{% extends "partials/layout.html" %}
+{% set title = "creator"%}
+
+{% block title %} {{title.capitalize()}} {% endblock %}
+{% block head %}
+    {{ super() }}
+    <!--  <script src="{{ url_for('static', filename='js/' + title.lower()) + '.js' }}"></script> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/' + title.lower()) + '.css' }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="divider"></div>
+    <div class="container">
+        <h1>Create new habit</h1>
+        <form action="/creator" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="desc">Description:</label>
+            <textarea id="desc" name="desc" rows="3"></textarea>
+
+            <label for="interval">Interval:</label>
+            <select id="interval" name="interval" required>
+                <option value="Daily">daily</option>
+                <option value="Weekly">weekly</option>
+            </select>
+
+            <button type="submit" class="btn">Create habit</button>
+        </form>
+        <a href="/" class="back-btn">Back to home page</a>
+    </div>
+{% endblock %}
