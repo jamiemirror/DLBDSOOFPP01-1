@@ -1,0 +1,154 @@
+:root {
+  --primary: #333;
+  --secondary: #111;
+  --action: #111;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+.header {
+  display: flex;
+  margin: 20px 20px 0 20px;
+  text-decoration: none;
+}
+  #logo {
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+  }
+
+.divider {
+  height: 2px;
+  background: #ddd;
+  margin: 15px 0;
+}
+
+#nav-bar{
+  align-self: center;
+  position: -webkit-sticky; /* For Safari bcz prof */
+  position: sticky;
+  }
+    #nav-bar ul {
+      /*
+      display:flex;
+      justify-content: center;
+      */
+      list-style-type: none;
+      
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      top: 0;
+      background-color: var(--primary);
+    }
+    
+      #nav-bar li {
+        float: inline-start;
+      }
+      
+        #nav-bar li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          transition: background 0.3s;
+        }
+        #nav-bar li a:hover {
+          background-color: var(--secondary);
+        }
+      
+      #active {
+        background-color: var(--action);
+      }
+
+/* .navbar {
+  background-color: #007bff;
+  padding: 15px;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+  }
+  .navbar a:hover {
+    background-color: #0056b3;
+  }
+ */
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+  .back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+
+    .back-btn:hover {
+      background-color: var(--secondary);
+    }
+  h1 {
+    text-align: center;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: var(--action);
+      color: white;
+    }
+    tr:nth-of-type(2n) {
+      background-color: #f9f9f9a6;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+  }
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  max-width: 1000px;
+  margin: auto;
+  gap: 8px;
+}
+  .searchbar input, select {
+
+    padding: 10px;
+
+  }
+  .searchbar select, button {
+    color: #ddd;
+    background-color: var(--primary);
+    border: 1px solid var(--primary)
+  }
+
+  .grow1 { flex-grow: 1; }

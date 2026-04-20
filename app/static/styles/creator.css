@@ -1,0 +1,115 @@
+:root {
+  --primary: #333;
+  --secondary: #111;
+  --action: #111;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+.header {
+  display: flex;
+  margin: 20px 20px 0 20px;
+  text-decoration: none;
+}
+  #logo {
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+  }
+
+.divider {
+  height: 2px;
+  background: #ddd;
+  margin: 15px 0;
+}
+
+#nav-bar{
+  align-self: center;
+  position: -webkit-sticky; /* For Safari bcz prof */
+  position: sticky;
+  }
+    #nav-bar ul {
+      list-style-type: none;
+      
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      top: 0;
+      background-color: var(--primary);
+    }
+    
+      #nav-bar li {
+        float: inline-start;
+      }
+      
+        #nav-bar li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          transition: background 0.3s;
+        }
+        #nav-bar li a:hover {
+          background-color: var(--secondary);
+        }
+      
+      #active {
+        background-color: var(--action);
+      }
+
+      /* unique css */
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 10px;
+    }
+      input, textarea, select {
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+  .btn {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--action);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+    .btn:hover {
+      background-color: #218838;
+    }
+  .back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+
+    .back-btn:hover {
+      background-color: var(--secondary);
+    }
